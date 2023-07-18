@@ -27,6 +27,7 @@ useEffect(()=>{
 },[])
   const { children, values = {} } = props;
   return (
+   <>
     <AppContext.Provider
       value={{
         appLoading,
@@ -41,6 +42,7 @@ useEffect(()=>{
     >
       {children}
     </AppContext.Provider>
+   </>
   );
 };
 const useAppContext = () => useContext(AppContext);
