@@ -2,12 +2,14 @@ import axios from "axios";
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
+import { useAppContext } from "../contextProvider/useAppContext";
 import Layout from "../layout/Layout";
 
 const Register = () => {
   const [registerForm, setRegisterForm] = useState({});
   const [isPhoneNumberValid,setIsPhoneNumberValid] = useState(true);
   const [isValidData,setIsValidData]=useState(false);
+  const {setAppLoading,setUserData} = useAppContext()
   const navigate = useNavigate();
   
   useMemo(()=>{
@@ -45,16 +47,38 @@ const Register = () => {
             'Content-Type': 'application/json'
           },
     }
-    const res = await axios(config)
-    if(res.status == 200){
-        Swal.fire({
-            icon: 'success',
-            title: 'You have registered successfully',
+    try {
+        const res = await axios(config);
+        setAppLoading(false);
+        if (res.status == 200) {
+          await Swal.fire({
+            icon: "success",
+            title: "Registration successfull",
             showConfirmButton: false,
-            timer: 1500
-          })
-          navigate('/')
-    }
+            timer: 1500,
+          });
+           setUserData(res.data.result);
+          navigate("/");
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Registration failed",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setAppLoading(false);
+        }
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.response.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setAppLoading(false);
+      }
     
   }
 
