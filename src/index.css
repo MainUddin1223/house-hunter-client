@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body{
+  scroll-behavior: smooth;
+}
+:root {
+  --primary-color: #388fb5;
+  --secondary-color: #2693e1;
+  --button-coler: #066e85;
+}
