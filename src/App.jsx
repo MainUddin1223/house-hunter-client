@@ -1,7 +1,7 @@
+import { Outlet } from 'react-router-dom'
 import './App.css'
 import Loader from './components/Loader'
 import { useAppContext } from './contextProvider/useAppContext'
-import Home from './pages/Home'
 
 function App() {
   const {appLoading} = useAppContext()
@@ -11,7 +11,7 @@ function App() {
   }
   return (
     <>
-      <Home/>
+      <Outlet />
     </>
   )
 }

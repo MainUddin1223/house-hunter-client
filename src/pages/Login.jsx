@@ -11,6 +11,7 @@ const Login = () => {
   const [loginForm, setLoginForm] = useState({});
   const [isValidData, setIsValidData] = useState(false);
   const navigate = useNavigate();
+
   useMemo(() => {
     if (loginForm?.email && loginForm?.password) {
       setIsValidData(true);
@@ -18,6 +19,7 @@ const Login = () => {
       setIsValidData(false);
     }
   }, [loginForm]);
+  
   const handleLogin = async (event) => {
     event.preventDefault();
     setAppLoading(true);
@@ -39,9 +41,13 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-         setUserData(res.data.result);
-        localStorage.setItem('token',res.data.accessToken)
-        navigate("/");
+        setUserData(res.data.result);
+        localStorage.setItem("token", res.data.accessToken);
+        if (res.data?.result?.role === "owner") {
+          navigate("/owner");
+        } else {
+          navigate("/");
+        }
       } else {
         Swal.fire({
           icon: "error",

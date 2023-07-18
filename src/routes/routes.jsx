@@ -1,6 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
+import Home from '../pages/Home';
+import ListAHouse from '../pages/ListAHouse';
 import Login from '../pages/Login';
+import NotFound from '../pages/NotFound';
+import OwnerDashboard from '../pages/OwnerDashboard';
+import OwnerHouseList from '../pages/OwnerHouseList';
 import Register from '../pages/Register';
 
 
@@ -9,10 +14,10 @@ const routes = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
-    //   {
-    //     index: true,
-    //     element: <Home />,
-    //   },
+      {
+        index: true,
+        element: <Home/>,
+      },
     //   {
     //     path: '/products',
     //     element: <Products />,
@@ -28,6 +33,20 @@ const routes = createBrowserRouter([
     ],
   },
   {
+    path: '/owner',
+    element: <OwnerDashboard />,
+    children:[
+        {
+            index: true,
+            element: <OwnerHouseList/>,
+          },
+        {
+            path:'/owner/list-house',
+            element: <ListAHouse/>,
+          },
+    ]
+  },
+  {
     path: '/login',
     element: <Login/>,
   },
@@ -35,10 +54,10 @@ const routes = createBrowserRouter([
     path: '/register',
     element: <Register />,
   },
-//   {
-//     path: '*',
-//     element: <NotFound />,
-//   },
+  {
+    path: '*',
+    element: <NotFound />,
+  },
 ]);
 
 export default routes;
