@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Loader from "../components/Loader";
 import { useAppContext } from "../contextProvider/useAppContext";
@@ -8,6 +9,7 @@ const OwnerHouseList = () =>{
     const [listedHouseList,setListedHouseList] = useState([]);
     const {appLoading,setAppLoading} =useAppContext();
     const [deleteSuccessful,setDeleteSucessful] = useState(false)
+    const navigate = useNavigate()
 
     const handleDelete = async(id)=>{
       setAppLoading(true)
@@ -49,7 +51,7 @@ const OwnerHouseList = () =>{
     useEffect(()=>{
         handleHouseList()
     },[deleteSuccessful]);
-console.log(deleteSuccessful)
+    
     const handleHouseList = async()=>{
         setAppLoading(true)
         const token = localStorage.getItem('token');
@@ -64,13 +66,14 @@ console.log(deleteSuccessful)
           try {
             const result = await axios(config);
             setListedHouseList(result?.data?.result)
-            console.log(result?.data?.result)
             setAppLoading(false)
           } catch (error) {
             setAppLoading(false)
           }
     }
+
     appLoading && <Loader/>
+    
     return(
 <div className="">
     <h1 className="my-4 text-center uppercase text-2xl font-semibold">Your listed house</h1>
@@ -87,6 +90,7 @@ console.log(deleteSuccessful)
       <th scope="col" className="px-6 py-4">Rent amount</th>
       <th scope="col" className="px-6 py-4">Bedrooms</th>
       <th scope="col" className="px-6 py-4">Bathrooms</th>
+      <th scope="col" className="px-6 py-4">Status</th>
       <th scope="col" className="px-6 py-4">Room Size</th>
             </tr>
           </thead>
@@ -102,8 +106,9 @@ console.log(deleteSuccessful)
       <td className="whitespace-nowrap px-6 py-4">{house?.rent}</td>
       <td className="whitespace-nowrap px-6 py-4">{house?.bedrooms}</td>
       <td className="whitespace-nowrap px-6 py-4">{house?.bathrooms}</td>
+      <td className="whitespace-nowrap px-6 py-4">{house?.isBooked?'Booked':'Available'}</td>
       <td className="whitespace-nowrap px-6 py-4">{house?.roomSize}</td>
-      <td className="whitespace-nowrap px-6 py-4"><button className="bg-button-color px-3 py-1 rounded text-white font-semibold">Edit</button></td>
+      <td className="whitespace-nowrap px-6 py-4"><button className="bg-button-color px-3 py-1 rounded text-white font-semibold" onClick={()=>navigate(`/owner/house/${house?._id}`)}>Edit</button></td>
       <td className="whitespace-nowrap px-6 py-4"><button className="bg-button-color px-3 py-1 rounded text-white font-semibold" onClick={()=>handleConfirmation(house?._id)}>Delete</button></td>
     </tr>
   ))

@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
+import EditHouse from '../pages/EditHouse';
 import Home from '../pages/Home';
 import ListAHouse from '../pages/ListAHouse';
 import Login from '../pages/Login';
@@ -43,6 +44,10 @@ const routes = createBrowserRouter([
         {
             path:'/owner/list-house',
             element: <ListAHouse/>,
+          },
+        {
+            path:'/owner/house/:id',
+            element: <EditHouse/>,
           },
     ]
   },

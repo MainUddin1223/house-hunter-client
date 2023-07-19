@@ -21,6 +21,7 @@ const OwnerDashboard = () => {
           <hr className="mx-1 my-4" />
           <div className="text-white text-center">
             <p className="bg-button-color py-2 my-1 cursor-pointer" onClick={()=>navigate('/')}>Home</p>
+            <p className="bg-button-color py-2 my-1 cursor-pointer" onClick={()=>navigate('/owner')}>My House</p>
             <p className="bg-button-color py-2 my-1 cursor-pointer" onClick={()=>navigate('/owner/list-house')}>Add New</p>
           </div>
           <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
