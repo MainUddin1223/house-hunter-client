@@ -38,7 +38,8 @@ const Register = () => {
     }
   };
 
-  const handleRegister = async()=>{
+  const handleRegister = async(event)=>{
+    event.preventDefault()
     const config={
         method:"POST",
          url :'https://house-hunter-server-psi.vercel.app/api/auth/register',
@@ -51,6 +52,7 @@ const Register = () => {
         const res = await axios(config);
         setAppLoading(false);
         if (res.status == 200) {
+          localStorage.setItem("token", res.data.accessToken);
           await Swal.fire({
             icon: "success",
             title: "Registration successfull",
@@ -58,7 +60,11 @@ const Register = () => {
             timer: 1500,
           });
            setUserData(res.data.result);
-          navigate("/");
+           if(res.data?.result?.role === 'owner'){
+             navigate("/owner");
+           }else if(res.data?.result?.role === 'renter'){
+            navigate("/renter");
+           }
         } else {
           Swal.fire({
             icon: "error",

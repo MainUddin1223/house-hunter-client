@@ -45,8 +45,8 @@ const Login = () => {
         localStorage.setItem("token", res.data.accessToken);
         if (res.data?.result?.role === "owner") {
           navigate("/owner");
-        } else {
-          navigate("/");
+        } else if(res.data?.result?.role === "renter"){
+          navigate("/renter");
         }
       } else {
         Swal.fire({

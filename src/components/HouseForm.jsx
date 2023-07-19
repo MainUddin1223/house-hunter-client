@@ -15,7 +15,6 @@ const HouseForm = ({
       setPhoneNumberValid(true);
     }
   };
-console.log(formData)
   return (
     <>
       <div className="p-8">

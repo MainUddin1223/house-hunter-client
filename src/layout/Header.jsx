@@ -9,8 +9,8 @@ const Header = () => {
     const handleNavigate=()=>{
         if(userData?.role == 'owner'){
             navigate('/owner')
-        }else{
-            navigate('/login')
+        }else if(userData?.role == 'renter'){
+            navigate('/renter')
         }
     }
   return (

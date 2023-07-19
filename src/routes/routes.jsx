@@ -2,12 +2,16 @@ import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
 import EditHouse from '../pages/EditHouse';
 import Home from '../pages/Home';
+import HouseDetails from '../pages/HouseDetails';
 import ListAHouse from '../pages/ListAHouse';
 import Login from '../pages/Login';
 import NotFound from '../pages/NotFound';
 import OwnerDashboard from '../pages/OwnerDashboard';
 import OwnerHouseList from '../pages/OwnerHouseList';
 import Register from '../pages/Register';
+import RenterBookings from '../pages/RenterBookings';
+import RenterDashboard from '../pages/RenterDashboard';
+import PrivateRoutes from './privateRoute';
 
 
 const routes = createBrowserRouter([
@@ -19,23 +23,25 @@ const routes = createBrowserRouter([
         index: true,
         element: <Home/>,
       },
-    //   {
-    //     path: '/products',
-    //     element: <Products />,
-    //   },
-    //   {
-    //     path: '/product-details/:id',
-    //     element: <ProductDetails />,
-    //   },
-    //   {
-    //     path: '/checkout',
-    //     element: <PrivateRoutes><Checkout /></PrivateRoutes>,
-    //   },
+      {
+        path: '/house/details/:id',
+        element: <PrivateRoutes><HouseDetails /></PrivateRoutes>,
+      },
     ],
   },
   {
+    path: '/renter',
+    element: <RenterDashboard />,
+    children:[
+        {
+            index: true,
+            element: <PrivateRoutes role="renter"><RenterBookings/></PrivateRoutes>,
+          },
+    ]
+  },
+  {
     path: '/owner',
-    element: <OwnerDashboard />,
+    element: <PrivateRoutes role="owner"><OwnerDashboard /></PrivateRoutes>,
     children:[
         {
             index: true,
