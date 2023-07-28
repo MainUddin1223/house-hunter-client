@@ -1,0 +1,33 @@
+.invest-img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+.investment-guideline {
+  background-color: var(--secondary-color);
+  height: 250px;
+  position: relative;
+  margin-top: -120px;
+  z-index: -1;
+  color: white;
+  text-align: center;
+}
+.guidline-container {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.investment-button {
+  cursor: pointer;
+  border: none;
+  background-color: var(--button-color);
+  font-size: 22px;
+  padding: 8px 15px;
+  color: white;
+  transition: 0.7s ease-in-out;
+}
+.investment-button:hover {
+  background-color: var(--primary-color);
+}

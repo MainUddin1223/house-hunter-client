@@ -1,13 +1,12 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
-body{
-  scroll-behavior: smooth;
-}
+@tailwind utilities; */
+
 :root {
   --primary-color: #388fb5;
-  --secondary-color: #2693e1;
-  --button-coler: #066e85;
+  --secondary-color: #3f5f76;
+  --button-color: #066e85;
+  --max-width: 80%;
 }
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -17,6 +16,13 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
+}
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: sans-serif;
 }

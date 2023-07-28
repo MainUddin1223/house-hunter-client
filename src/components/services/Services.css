@@ -1,0 +1,33 @@
+.Service-heading {
+  text-align: center;
+  color: var(--primary-color);
+}
+hr {
+  width: 100px;
+}
+.services-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+}
+.service-item {
+  padding: 15px;
+  overflow: hidden;
+  border-radius: 8px;
+  text-align: center;
+  background-color: rgb(253, 253, 253);
+  transition: 0.5s ease-in-out;
+}
+.service-item:hover {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.service-item img {
+  margin: 0 auto;
+  width: 100px;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}

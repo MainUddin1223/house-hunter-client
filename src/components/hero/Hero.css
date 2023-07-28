@@ -1,0 +1,79 @@
+.hero-section {
+  position: relative;
+  top: 0;
+}
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--button-color);
+  font-size: 35px;
+}
+.prev {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  color: var(--button-color);
+  font-size: 35px;
+}
+.hero-description-section {
+  position: absolute;
+  width: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.other-cost-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: rgba(255, 255, 255, 0.821);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  gap: 5%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.property-rate-amount {
+  font-weight: bold;
+  font-size: 29px;
+  margin-bottom: 0px;
+}
+.property-costing-name {
+  font-size: 21px;
+}
+.discount-section {
+  background-color: rgba(255, 255, 255, 0.821);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  text-align: center;
+  width: 50%;
+  margin: 30px auto;
+  padding: 5px;
+}
+.discount-section p {
+  font-weight: 500;
+}
+.discount-section h1 {
+  text-transform: uppercase;
+}
+.register-btn {
+  display: block;
+  padding: 10px 20px;
+  border: none;
+  margin: 0 auto;
+  color: white;
+  background-color: var(--button-color);
+  border-radius: 5px;
+  transition: 0.8s ease-in-out;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+}
+.register-btn:hover {
+  background-color: var(--primary-color);
+}
