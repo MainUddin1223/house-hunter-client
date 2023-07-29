@@ -1,0 +1,73 @@
+.login-section {
+  height: 80vh;
+}
+.login-container {
+  width: 30%;
+  margin: 40px auto;
+  background-color: rgb(247, 245, 245);
+  border-radius: 10px;
+}
+.login-container h2 {
+  background-color: var(--primary-color);
+  border-radius: 10px 10px 0 0;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+.email-div {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: 10px auto;
+  gap: 10px;
+  font-weight: bold;
+  color: gray;
+}
+.email-div input {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+.lost-password {
+  text-align: right;
+  margin: 20px;
+  display: block;
+  text-decoration: none;
+}
+.login-button {
+  /* `w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-4 focus:outline-none dark:focus:ring-primary ${
+                  !isValidData
+                    ? "bg-gray-400"
+                    : "bg-button-color hover:bg-primary dark:bg-blue-600 dark:hover:bg-blue-700"
+                }` */
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+  font-size: 21px;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.isValid-login-info {
+  background-color: var(--button-color);
+  transition: 0.8s ease-in-out;
+  color: white;
+}
+.isValid-login-info:hover {
+  background-color: var(--primary-color);
+}
+.isInvalid-login-info {
+  background-color: gray;
+  color: white;
+}
+
+.not-registered-section {
+  text-align: right;
+  padding: 20px;
+}
+.not-registered-section a {
+  text-decoration: none;
+}

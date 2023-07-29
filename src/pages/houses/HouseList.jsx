@@ -2,18 +2,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import AppLoader from "../../components/appLoader/AppLoader";
+import HouseFilter from "../../components/houseFilter/HouseFilters";
 import ProperyList from "../../components/propertyList/PropertyList";
 import { useAppContext } from "../../contextProvider/useAppContext";
+import Layout from "../../layout/Layout";
 import './HouseList.css';
 
 const HouseList = () => {
   const [houseList, setHouseList] = useState([]);
   const { setAppLoading, appLoading } = useAppContext();
-//   const [filterableField, setFilterableField] = useState({});
-//   const [searchTerm, setSearchTerm] = useState("");
+  const [filterableField, setFilterableField] = useState({});
+  const [searchTerm, setSearchTerm] = useState("");
   const [totalData, setTotalData] = useState({});
-  const totalPages = Math.ceil(Number(totalData?.total) / 10);
-console.log(totalPages);
+const totalPages = Math.ceil(Number(totalData?.total) / 10);
+    
   const getHouses = async (params = {}) => {
     setAppLoading(true);
     const config = {
@@ -38,32 +40,30 @@ console.log(totalPages);
     getHouses();
   }, []);
     
-//   const handleSearch = () => {
-//     if (searchTerm) {
-//       const params = { searchTerm };
-//       getHouses(params);
-//       setSearchTerm("");
-//     }
-//   };
+  const handleSearch = () => {
+    if (searchTerm) {
+      const params = { searchTerm };
+      getHouses(params);
+    }
+  };
 
-//   const handleFilter = () => {
-//     const params = {};
+  const handleFilter = () => {
+    const params = {};
 
-//     for (const key in filterableField) {
-//       if (Object.prototype.hasOwnProperty.call(filterableField, key)) {
-//         const value = filterableField[key];
+    for (const key in filterableField) {
+      if (Object.prototype.hasOwnProperty.call(filterableField, key)) {
+        const value = filterableField[key];
 
-//         if (value) {
-//           params[key] = value;
-//         }
-//       }
-//     }
+        if (value) {
+          params[key] = value;
+        }
+      }
+    }
 
-//     if (Object.keys(params).length > 0) {
-//       getHouses(params);
-//       setFilterableField({});
-//     }
-//   };
+    if (Object.keys(params).length > 0) {
+      getHouses(params);
+    }
+  };
 
     const handlePagination = (index) => {
         if (index >= 1 && index <= totalPages) getHouses({ page: index });
@@ -73,8 +73,16 @@ console.log(totalPages);
     return <AppLoader />;
     }
   return (
-    <>
-      <div>this is filter section</div>
+    <Layout>
+      <div>
+        <HouseFilter
+          setSearchTerm={setSearchTerm}
+          handleSearch={handleSearch}
+          setFilterableField={setFilterableField}
+          handleFilter={handleFilter}
+          filterableField={filterableField}
+        />
+      </div>
       <div>
         {houseList?.length ? (
           <ProperyList houseList={houseList} />
@@ -93,9 +101,7 @@ console.log(totalPages);
             onClick={() => {
               handlePagination(index + 1);
             }}
-            className={` ${
-              totalData?.page == index + 1 ? "selected" : ""
-            }`}
+            className={` ${totalData?.page == index + 1 ? "selected" : ""}`}
             key={index}
           >
             {" "}
@@ -139,7 +145,7 @@ console.log(totalPages);
           </button>
         ))}
       </div> */}
-    </>
+    </Layout>
   );
 };
 

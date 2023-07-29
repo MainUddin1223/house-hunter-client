@@ -1,0 +1,63 @@
+.filter-container {
+  background-color: rgb(246, 246, 246);
+  border-radius: 10px;
+  width: var(--max-width);
+  margin: 20px auto;
+}
+.search-section {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.search-section input {
+  padding: 20px;
+  border: none;
+  width: 50%;
+  border-radius: 10px 0px 0px 10px;
+  font-size: 21px;
+}
+.search-section button {
+  border: none;
+  width: 25%;
+  font-size: 21px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 0px 10px 10px 0px;
+}
+.price-slider-container {
+  width: 25%;
+}
+.rent-range-section {
+  display: flex;
+  gap: 20px;
+  padding: 0 20px;
+}
+.amount-div input {
+  width: 45px;
+}
+.price-slider {
+  padding: 0 20px;
+}
+.filter-section {
+  display: flex;
+  justify-content: space-evenly;
+}
+.filter-items {
+  display: flex;
+  gap: 25px;
+}
+.button-section {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  padding: 20px;
+}
+.button-section button {
+  padding: 8px 25px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--button-color);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}

@@ -3,7 +3,6 @@ import App from '../App';
 import EditHouse from '../pages/EditHouse';
 import Home from '../pages/Home';
 import ListAHouse from '../pages/ListAHouse';
-import Login from '../pages/Login';
 import NotFound from '../pages/NotFound';
 import OwnerDashboard from '../pages/OwnerDashboard';
 import OwnerHouseList from '../pages/OwnerHouseList';
@@ -11,6 +10,7 @@ import Register from '../pages/Register';
 import RenterBookings from '../pages/RenterBookings';
 import RenterDashboard from '../pages/RenterDashboard';
 import HouseList from '../pages/houses/HouseList';
+import Login from '../pages/login/Login';
 import HouseDetails from '../pages/propertyDetails/HouseDetails';
 import PrivateRoutes from './privateRoute';
 

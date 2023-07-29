@@ -2,6 +2,7 @@ import { AnimatePresence, motion, wrap } from "framer-motion";
 import { useState } from "react";
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import { FaBitcoin } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import banner_1 from '../../assets/house-banner-1.jpg';
 import banner_2 from '../../assets/house-banner-2.jpg';
 import banner_3 from '../../assets/house-banner-3.jpg';
@@ -11,7 +12,7 @@ const images = [
   banner_1,banner_2,banner_3,banner_4];
 
 const Hero = () => {
-
+const navigate = useNavigate();
     const variants = {
       enter: (direction) => {
         return {
@@ -114,7 +115,7 @@ const Hero = () => {
           <p>Get Upto $300K Discount on</p>
           <h1>Full Payment</h1>
         </div>
-        <button className="register-btn">Book your house</button>
+        <button className="register-btn" onClick={()=>navigate('/houses')}>Book your house</button>
       </div>
     </div>
   );

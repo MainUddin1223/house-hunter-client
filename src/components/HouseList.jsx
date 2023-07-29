@@ -3,8 +3,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAppContext } from "../contextProvider/useAppContext";
 import House from "./House";
-import HouseFilter from "./HouseFilters";
 import Loader from "./Loader";
+import HouseFilter from "./houseFilter/HouseFilters";
 
 const HouseList = () => {
   const [houseList, setHouseList] = useState([]);
