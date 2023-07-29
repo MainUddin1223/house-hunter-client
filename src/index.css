@@ -25,6 +25,7 @@ body {
   box-sizing: border-box;
   scroll-behavior: smooth;
   font-family: sans-serif;
+  scrollbar-width: none;
 }
 /* Screen sizes */
 /* Extra Small Screen (up to 575px) */

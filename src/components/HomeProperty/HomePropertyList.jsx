@@ -2,9 +2,11 @@
 /* eslint-disable react/prop-types */
 import { BiBath, BiBed } from "react-icons/bi";
 import { MdOutlineLocationOn } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import { useAppContext } from '../../contextProvider/useAppContext';
 import './HomePropertyList.css';
 const HomeProperyList = () => {
+  const navigate = useNavigate();
   const {houseList} = useAppContext()
     return (
       <div className="property-container">
@@ -18,7 +20,12 @@ const HomeProperyList = () => {
           Top Properties
         </h1>
         {houseList.map((house) => (
-          <div className="property-item ">
+          <div
+            className="property-item "
+            onClick={() => {
+              navigate(`/house/details/${house._id}`);
+            }}
+          >
             <img src={house.picture} alt="" />
             <div className="property-description">
               <p style={{ fontWeight: "bold" }}>Monthly rent $ {house.rent}</p>

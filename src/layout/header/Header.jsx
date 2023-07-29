@@ -15,11 +15,8 @@ const Header = () => {
     useEffect(() => {
       const _classList = [];
 
-      if (scroll.y > 250 && scroll.y - scroll.lastY > 0)
+      if (scroll.y > 150 && scroll.y - scroll.lastY > 0)
       { _classList.push("nav-bar--hidden"); }
-      else if (scroll.y > 250) {
-        _classList.push("nav-bar-color");
-      }
 
       setNavClassList(_classList);
     }, [scroll.y, scroll.lastY]);

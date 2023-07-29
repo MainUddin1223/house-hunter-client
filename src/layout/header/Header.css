@@ -1,11 +1,12 @@
 nav {
   position: sticky;
-  background: #8f8f8f6a;
+  background: var(--primary-color);
   top: 0;
   text-align: center;
   font-family: sans-serif;
   transition: transform 150ms ease-in-out;
   z-index: 99999;
+  color: white;
 }
 
 .nav-container {

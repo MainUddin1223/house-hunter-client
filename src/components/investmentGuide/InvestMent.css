@@ -31,3 +31,15 @@
 .investment-button:hover {
   background-color: var(--primary-color);
 }
+
+@media (max-width: 767px) {
+  .investment-guideline {
+    background-color: var(--secondary-color);
+    height: 250px;
+    position: relative;
+    margin-top: -15%;
+    z-index: -1;
+    color: white;
+    text-align: center;
+  }
+}
