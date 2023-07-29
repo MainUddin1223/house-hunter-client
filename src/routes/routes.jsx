@@ -10,63 +10,80 @@ import OwnerHouseList from '../pages/OwnerHouseList';
 import Register from '../pages/Register';
 import RenterBookings from '../pages/RenterBookings';
 import RenterDashboard from '../pages/RenterDashboard';
+import HouseList from '../pages/houses/HouseList';
 import HouseDetails from '../pages/propertyDetails/HouseDetails';
 import PrivateRoutes from './privateRoute';
 
 
 const routes = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     children: [
       {
         index: true,
-        element: <Home/>,
+        element: <Home />,
       },
       {
-        path: '/house/details/:id',
-        element: <PrivateRoutes><HouseDetails /></PrivateRoutes>,
+        path: "/houses",
+        element: <HouseList />,
+      },
+      {
+        path: "/house/details/:id",
+        element: (
+          <PrivateRoutes>
+            <HouseDetails />
+          </PrivateRoutes>
+        ),
       },
     ],
   },
   {
-    path: '/renter',
+    path: "/renter",
     element: <RenterDashboard />,
-    children:[
-        {
-            index: true,
-            element: <PrivateRoutes role="renter"><RenterBookings/></PrivateRoutes>,
-          },
-    ]
+    children: [
+      {
+        index: true,
+        element: (
+          <PrivateRoutes role="renter">
+            <RenterBookings />
+          </PrivateRoutes>
+        ),
+      },
+    ],
   },
   {
-    path: '/owner',
-    element: <PrivateRoutes role="owner"><OwnerDashboard /></PrivateRoutes>,
-    children:[
-        {
-            index: true,
-            element: <OwnerHouseList/>,
-          },
-        {
-            path:'/owner/list-house',
-            element: <ListAHouse/>,
-          },
-        {
-            path:'/owner/house/:id',
-            element: <EditHouse/>,
-          },
-    ]
+    path: "/owner",
+    element: (
+      <PrivateRoutes role="owner">
+        <OwnerDashboard />
+      </PrivateRoutes>
+    ),
+    children: [
+      {
+        index: true,
+        element: <OwnerHouseList />,
+      },
+      {
+        path: "/owner/list-house",
+        element: <ListAHouse />,
+      },
+      {
+        path: "/owner/house/:id",
+        element: <EditHouse />,
+      },
+    ],
   },
   {
-    path: '/login',
-    element: <Login/>,
+    path: "/login",
+    element: <Login />,
   },
   {
-    path: '/register',
+    path: "/register",
     element: <Register />,
   },
   {
-    path: '*',
+    path: "*",
     element: <NotFound />,
   },
 ]);

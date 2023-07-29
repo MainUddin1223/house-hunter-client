@@ -53,7 +53,7 @@ const Header = () => {
           <Link className="nav-item" to="/">
             Home
           </Link>
-          <Link className="nav-item" to="/">
+          <Link className="nav-item" to="/houses">
             Houses
           </Link>
           {userData?.email ? (

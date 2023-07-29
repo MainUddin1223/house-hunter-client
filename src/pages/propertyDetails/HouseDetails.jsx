@@ -166,6 +166,7 @@ if (userData?.role === 'owner') {
                 </div>
               </div>
             </div>
+            <button className="house-book-button">Explore more</button>
           </div>
           <div className="book-house-section">
             <div className="booking-status">
@@ -212,7 +213,7 @@ if (userData?.role === 'owner') {
               {houseData.isBooked ? (
                 <button
                   className="house-book-button"
-                  style={{backgroundColor:"gray"}}
+                  style={{ backgroundColor: "gray" }}
                   disabled={true}
                 >
                   Not available
