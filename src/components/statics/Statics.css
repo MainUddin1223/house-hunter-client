@@ -1,0 +1,49 @@
+.statics {
+  background: #f6f5f5;
+  padding: 10px;
+  margin: 100px 0;
+}
+.statics-section {
+  width: var(--max-width);
+  margin: 0 auto;
+}
+.statics-section h1 {
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+
+.statics-container {
+  display: flex;
+  gap: 20px;
+  text-transform: uppercase;
+  color: gray;
+  font-weight: 600;
+}
+.growth-rate {
+  font-size: 2.5rem;
+  padding: 5px;
+  color: black;
+}
+
+/*  Screen or below 767px */
+@media (max-width: 767px) {
+  .statics-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 25px;
+  }
+}
+/* Medium Screen (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .statics-container {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .statics-container div {
+    width: 45%;
+    text-align: center;
+  }
+}

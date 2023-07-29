@@ -7,7 +7,8 @@ const AppContextProvider = (props) => {
 
   const [appLoading,setAppLoading] = useState(false)
   const [isInviteModal, setIsInviteModal] = useState(false);
-  const [userData,setUserData] = useState({})
+  const [userData, setUserData] = useState({})
+    const [houseList, setHouseList] = useState([]);
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -46,6 +47,30 @@ useEffect(()=>{
   token && getAuth()
 },[])
 
+    const getHouses = async (params = {}) => {
+      setAppLoading(true);
+      const config = {
+        method: "GET",
+        url: "https://house-hunter-server-psi.vercel.app/api/house",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        params,
+      };
+      try {
+        const result = await axios(config);
+        console.log(result);
+        setHouseList(result?.data.data);
+        setAppLoading(false);
+      } catch (error) {
+        setAppLoading(false);
+      }
+    };
+
+    useEffect(() => {
+      getHouses({ limit: 6 });
+    }, []);
+
   const { children, values = {} } = props;
   return (
    <>
@@ -54,6 +79,7 @@ useEffect(()=>{
         appLoading,
         setAppLoading,
         // authData,
+        houseList,
         isInviteModal,
         setIsInviteModal,
         setUserData,

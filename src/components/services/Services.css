@@ -31,3 +31,9 @@ hr {
   display: block;
   transition: transform 0.3s ease;
 }
+
+@media (max-width: 767px) {
+  .services-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

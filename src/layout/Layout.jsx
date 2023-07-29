@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import Footer from './Footer.jsx';
-import Header from './Header.jsx';
+import Header from './header/Header.jsx';
 
 const Layout = ({ children }) => {
   return (

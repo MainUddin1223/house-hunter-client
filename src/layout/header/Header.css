@@ -1,0 +1,123 @@
+nav {
+  position: sticky;
+  background: #8f8f8f6a;
+  top: 0;
+  text-align: center;
+  font-family: sans-serif;
+  transition: transform 150ms ease-in-out;
+  z-index: 99999;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--max-width);
+  margin: 0 auto;
+}
+
+.nav-container h1 {
+  cursor: pointer;
+}
+
+.nav-bar-color {
+  background: var(--primary-color);
+  color: white;
+}
+.nav-item {
+  text-decoration: none;
+  color: white;
+  margin: 0 10px;
+}
+.ham-menu {
+  display: none;
+  font-size: 2rem;
+  padding-right: 10px;
+}
+nav.nav-bar--hidden {
+  transform: translateY(-100%);
+}
+.profile-icon {
+  font-size: 29px;
+}
+.login-btn {
+  border: none;
+  border-radius: 5px;
+  background-color: var(--button-color);
+  padding: 5px 8px;
+  color: white;
+  cursor: pointer;
+}
+.nav-list-mobile {
+  display: none;
+}
+
+/* Medium Screen (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Your CSS styles for medium screens go here */
+}
+
+/* Small Screen (576px to 767px) */
+@media (max-width: 767px) {
+  .nav-container {
+    width: 100%;
+    position: relative;
+  }
+  .nav-container h1 {
+    padding-left: 10px;
+  }
+  .nav-list {
+    display: none;
+  }
+  .nav-list-mobile {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    position: absolute;
+    top: 68px;
+    background-color: var(--primary-color);
+    transition: 0.5s ease-in-out;
+    overflow: hidden;
+    z-index: 999;
+  }
+  .nav-item-mobile {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .dropdown-wrapper {
+    position: fixed;
+    z-index: 99;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background-color: rgba(189, 189, 189, 0.5);
+  }
+  .nav-item-mobile:hover {
+    background-color: var(--button-color);
+  }
+  .nav-hidden {
+    margin-left: -50%;
+  }
+  .nav-show {
+    margin-left: 0;
+  }
+  .ham-menu {
+    display: block;
+    z-index: 999;
+  }
+  .ham-menu:focus > .nav-list {
+    display: none;
+  }
+}
+
+/* Extra Small Screen (up to 575px) */
+/* @media (max-width: 575px) {
+  .nav-list {
+    display: none;
+  }
+  .ham-menu {
+    display: block;
+  }
+} */

@@ -77,3 +77,55 @@
 .register-btn:hover {
   background-color: var(--primary-color);
 }
+
+/* Medium Screen to 991px */
+@media (max-width: 991px) {
+  .hero-description-section {
+    width: 95%;
+  }
+  .other-cost-section {
+    gap: 5px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .property-rate-amount {
+    font-size: 18px;
+  }
+  .property-costing-name {
+    font-size: 15px;
+  }
+  .discount-section {
+    width: 75%;
+  }
+  .discount-section h1 {
+    font-size: 18px;
+  }
+  .discount-section p {
+    font-size: 15px;
+  }
+}
+
+/* for extra small devices */
+@media (max-width: 575px) {
+  .hero-description-section {
+    width: 98%;
+  }
+  .property-rate-amount {
+    font-size: 15px;
+  }
+  .property-costing-name {
+    font-size: 10px;
+  }
+  .discount-section {
+    width: 80%;
+    margin: 10px auto;
+    padding: 2px;
+  }
+  .discount-section h1 {
+    font-size: 15px;
+  }
+  .discount-section p {
+    font-size: 13px;
+  }
+}
