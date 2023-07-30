@@ -4,7 +4,7 @@ import EditHouse from '../pages/EditHouse';
 import Home from '../pages/Home';
 import ListAHouse from '../pages/ListAHouse';
 import NotFound from '../pages/NotFound';
-import OwnerDashboard from '../pages/OwnerDashboard';
+import OwnerDashboard from '../pages/OwnerDashboard/OwnerDashboard';
 import OwnerHouseList from '../pages/OwnerHouseList';
 import RenterBookings from '../pages/RenterBookings';
 import RenterDashboard from '../pages/RenterDashboard';
