@@ -2,14 +2,17 @@ import axios from "axios";
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
-import { useAppContext } from "../contextProvider/useAppContext";
-import Layout from "../layout/Layout";
+import AppLoader from "../../components/appLoader/AppLoader";
+import { useAppContext } from "../../contextProvider/useAppContext";
+import Layout from "../../layout/Layout";
+import './Register.css';
 
 const Register = () => {
   const [registerForm, setRegisterForm] = useState({});
-  const [isPhoneNumberValid,setIsPhoneNumberValid] = useState(true);
+  // const [isPhoneNumberValid,setIsPhoneNumberValid] = useState(true);
   const [isValidData,setIsValidData]=useState(false);
-  const {setAppLoading,setUserData} = useAppContext()
+  const { setUserData } = useAppContext();
+  const [isLoadig,setIsLoading] = useState(false)
   const navigate = useNavigate();
   
   useMemo(()=>{
@@ -18,25 +21,24 @@ const Register = () => {
         registerForm?.phoneNumber &&
         registerForm?.email &&
         registerForm?.role &&
-        registerForm?.password &&
-        isPhoneNumberValid ){
+        registerForm?.password ){
         setIsValidData(true)
         } else{
             setIsValidData(false)
         }
             
-  },[registerForm,isPhoneNumberValid])
+  },[registerForm])
   
-  const handlePhoneNumber = (event) => {
-    const phoneNumber = event.target.value;
-    const regex = /^\+88\d{11}$/;
-    if (regex.test(phoneNumber)) {
-        setIsPhoneNumberValid(true)
-    }else{
-        setIsPhoneNumberValid(false)
+  // const handlePhoneNumber = (event) => {
+  //   const phoneNumber = event.target.value;
+  //   const regex = /^\+88\d{11}$/;
+  //   if (regex.test(phoneNumber)) {
+  //       setIsPhoneNumberValid(true)
+  //   }else{
+  //       setIsPhoneNumberValid(false)
 
-    }
-  };
+  //   }
+  // };
 
   const handleRegister = async(event)=>{
     event.preventDefault()
@@ -49,9 +51,10 @@ const Register = () => {
           },
     }
     try {
+      setIsLoading(true);
         const res = await axios(config);
-        setAppLoading(false);
-        if (res.status == 200) {
+      if (res.status == 200) {
+                setIsLoading(false);
           localStorage.setItem("token", res.data.accessToken);
           await Swal.fire({
             icon: "success",
@@ -73,7 +76,7 @@ const Register = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          setAppLoading(false);
+                setIsLoading(false);
         }
       } catch (error) {
         Swal.fire({
@@ -83,20 +86,21 @@ const Register = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        setAppLoading(false);
+        setIsLoading(false);
       }
     
   }
 
+  if (isLoadig) {
+    return<AppLoader/>
+  }
   return (
     <Layout>
-      <div className="">
-        <div className="w-full mx-auto md:mt-16 mt-4 max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-          <form className="space-y-6" action="#">
-            <h5 className="text-xl font-medium text-gray-900 dark:text-white">
-              Register in to House Hunter
-            </h5>
-            <div>
+      <div className="register-section">
+        <div className="register-container">
+          <h2>Register in to House Hunter</h2>
+          <form className="=" action="#">
+            <div className="email-div">
               <label
                 htmlFor="name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -119,15 +123,22 @@ const Register = () => {
                 required
               />
             </div>
-            <div className="flex gap-8">
-                <p>Your Role</p>
-              <select onChange={(event)=>setRegisterForm((prev)=>({...prev,role:event.target.value}))}>
+            <div className="role-div">
+              <p>Your Role</p>
+              <select
+                onChange={(event) =>
+                  setRegisterForm((prev) => ({
+                    ...prev,
+                    role: event.target.value,
+                  }))
+                }
+              >
                 <option value="">Select one</option>
                 <option value="owner">Owner</option>
                 <option value="renter">Renter</option>
               </select>
             </div>
-            <div>
+            <div className="email-div">
               <label
                 htmlFor="text"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -146,15 +157,11 @@ const Register = () => {
                     phoneNumber: event.target.value,
                   }));
                 }}
-                onBlur={handlePhoneNumber}
                 value={registerForm?.phoneNumber ?? ""}
                 required
               />
-              {
-                !isPhoneNumberValid && <p className="text-red-700">Invalid phone number</p>
-              }
             </div>
-            <div>
+            <div className="email-div">
               <label
                 htmlFor="email"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -177,7 +184,7 @@ const Register = () => {
                 required
               />
             </div>
-            <div>
+            <div className="email-div">
               <label
                 htmlFor="password"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -202,17 +209,21 @@ const Register = () => {
             </div>
             <button
               type="submit"
-              className={`w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-4 focus:outline-none dark:focus:ring-primary ${
-                !isValidData ? 'bg-gray-400' : 'bg-button-color hover:bg-primary dark:bg-blue-600 dark:hover:bg-blue-700'
+              className={`register-button  ${
+                !isValidData
+                  ? "isInvalid-register-info"
+                  : "isValid-register-info"
               }`}
               disabled={!isValidData && true}
               onClick={handleRegister}
             >
               Register
             </button>
-            <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
+            <div className="already-registered">
               Already registered?{" "}
-              <Link to='/login' className="text-blue-500">Login</Link>
+              <Link to="/login" className="text-blue-500">
+                Login
+              </Link>
             </div>
           </form>
         </div>

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import Loader from "../../components/Loader";
+import AppLoader from "../../components/appLoader/AppLoader";
 import { useAppContext } from "../../contextProvider/useAppContext";
 import Layout from "../../layout/Layout";
 import './Login.css';
@@ -72,7 +72,7 @@ const Login = () => {
   };
 
   if (appLoading) {
-    return <Loader />;
+    return <AppLoader />;
   }
 
   return (
@@ -81,7 +81,7 @@ const Login = () => {
         <div className="login-container">
           <h2>Sign in to House Hunter</h2>
           <div className="">
-            <form className="space-y-6" action="#">
+            <form className="" action="#">
               <div className="email-div">
                 <label htmlFor="email" className="">
                   Your email

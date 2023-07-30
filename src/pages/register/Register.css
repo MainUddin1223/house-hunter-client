@@ -1,13 +1,13 @@
-.login-section {
+/* .register-section {
   height: 80vh;
-}
-.login-container {
+} */
+.register-container {
   width: 30%;
   margin: 40px auto;
   background-color: rgb(247, 245, 245);
   border-radius: 10px;
 }
-.login-container h2 {
+.register-container h2 {
   background-color: var(--primary-color);
   border-radius: 10px 10px 0 0;
   color: white;
@@ -28,18 +28,20 @@
   padding: 10px;
   border-radius: 10px;
 }
-.lost-password {
-  text-align: right;
-  margin: 20px;
-  display: block;
-  text-decoration: none;
+.role-div {
+  display: flex;
+  width: 75%;
+  gap: 15px;
+  align-items: center;
+  margin: 10px auto;
 }
-.login-button {
-  /* `w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-4 focus:outline-none dark:focus:ring-primary ${
-                  !isValidData
-                    ? "bg-gray-400"
-                    : "bg-button-color hover:bg-primary dark:bg-blue-600 dark:hover:bg-blue-700"
-                }` */
+.role-div select {
+  border: none;
+  padding: 0 10px;
+  border-radius: 5px;
+  height: 25px;
+}
+.register-button {
   width: 50%;
   display: block;
   margin: 0 auto;
@@ -49,43 +51,43 @@
   cursor: pointer;
   border-radius: 5px;
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 
-.isValid-login-info {
+.isValid-register-info {
   background-color: var(--button-color);
   transition: 0.8s ease-in-out;
   color: white;
 }
-.isValid-login-info:hover {
+.isValid-register-info:hover {
   background-color: var(--primary-color);
 }
-.isInvalid-login-info {
+.isInvalid-register-info {
   background-color: gray;
   color: white;
 }
 
-.not-registered-section {
+.already-registered {
   text-align: right;
   padding: 20px;
 }
-.not-registered-section a {
+.already-registered a {
   text-decoration: none;
 }
-
 @media (max-width: 575px) {
-  .login-container {
+  .register-container {
     width: 95%;
   }
 }
 /* Small Screen (576px to 767px) */
 @media (min-width: 576px) and (max-width: 767px) {
-  .login-container {
+  .register-container {
     width: 75%;
   }
 }
 /* Medium Screen (768px to 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
-  .login-container {
+  .register-container {
     width: 50%;
   }
 }
