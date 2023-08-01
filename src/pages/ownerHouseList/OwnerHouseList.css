@@ -1,0 +1,119 @@
+.owner-house-list-header {
+  background-color: var(--primary-color);
+  margin: 0;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  position: sticky;
+  top: 0;
+}
+
+/* demo */
+.container {
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+h2 {
+  font-size: 26px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+h2 small {
+  font-size: 0.5em;
+}
+.list-container {
+  overflow-x: scroll;
+  display: block;
+}
+.responsive-table {
+  padding: 5px;
+  min-width: 1300px;
+}
+.responsive-table li {
+  border-radius: 3px;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.responsive-table .table-header {
+  background-color: #95a5a6;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+
+.responsive-table .table-row {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.col-1 {
+  width: 15%;
+}
+.col-2 {
+  width: 15%;
+}
+.col-3 {
+  width: 10%;
+}
+.col-4 {
+  width: 10%;
+}
+.col-5 {
+  width: 10%;
+}
+.col-6 {
+  width: 10%;
+}
+.col-7 {
+  width: 10%;
+}
+.col-8 {
+  width: 10%;
+}
+.col-9 {
+  width: 10%;
+}
+
+@media all and (max-width: 991px) {
+  .responsive-table {
+    padding: 5px;
+    min-width: 100px;
+  }
+  .responsive-table .table-header {
+    display: none;
+  }
+
+  .responsive-table li {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: left;
+    align-items: start;
+  }
+
+  .responsive-table .col {
+    flex-basis: 100%;
+  }
+
+  .responsive-table .col {
+    display: flex;
+    padding: 10px 0;
+  }
+
+  .responsive-table .col:before {
+    color: #6c7a89;
+    padding-right: 15px;
+    content: attr(data-label);
+    text-align: right;
+  }
+}

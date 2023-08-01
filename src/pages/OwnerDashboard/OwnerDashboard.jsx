@@ -66,7 +66,7 @@ console.log(userData)
           </div>
         </div>
         <div className={`content-container ${isHideNav && "is-nav-closed"}`}>
-          <Outlet />
+          <Outlet/>
         </div>
       </div>
     </div>
