@@ -7,7 +7,7 @@ const Statics = () => {
       <div className="statics-section">
         <h1>The future of property managemnet is here</h1>
         <div className="statics-container">
-          <div>
+          <div className="statics-item">
             <span className="growth-rate">
               <GiCrystalGrowth style={{ marginRight: "10px" }} />5
             </span>

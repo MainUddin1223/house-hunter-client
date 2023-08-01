@@ -42,7 +42,14 @@ const HouseFilter = ({
           onClick={() => setShowFilter(!showFilter)}
         />
       </div>
-      <div className={`filter ${showFilter?'show-filter':''}`}>
+      {/* <div className="available-toggle">
+        <p>Available only</p>
+        <label className="switch">
+          <input type="checkbox" />
+          <span className="slider round"></span>
+        </label>
+      </div> */}
+      <div className={`filter ${showFilter ? "show-filter" : ""}`}>
         <div className="filter-section">
           <div className="price-slider-container">
             <div className="price-slider">
@@ -131,7 +138,7 @@ const HouseFilter = ({
                 onClick={() =>
                   setFilterableField((prev) => ({
                     ...prev,
-                    bathRooms: filterableField?.bathRooms
+                    bathrooms: filterableField?.bathRooms
                       ? filterableField?.bathRooms - 1
                       : 0,
                   }))

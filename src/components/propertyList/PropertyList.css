@@ -24,7 +24,10 @@
 .property-item:hover {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
-.property-item img {
+.property-img-div {
+  position: relative;
+}
+.property-img-div img {
   transition: transform 0.3s ease;
   border-radius: 7px 0 0 7px;
   width: 100%;
@@ -43,13 +46,26 @@
 }
 .property-status {
   display: inline-block;
-  padding: 10px;
+  padding: 5px;
   color: white;
   font-weight: 600;
   border-radius: 5px;
   position: absolute;
   top: 0;
+  left: 10px;
+}
+.share-icons {
+  position: absolute;
+  top: 10px;
   right: 10px;
+}
+.share-icon {
+  padding: 5px;
+  border-radius: 10px;
+  margin: 5px;
+  color: white;
+  font-size: 21px;
+  background-color: var(--secondary-color);
 }
 .explore-btn {
   cursor: pointer;
