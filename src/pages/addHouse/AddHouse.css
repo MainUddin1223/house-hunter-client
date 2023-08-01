@@ -1,0 +1,29 @@
+.owner-add-house-header {
+  background-color: var(--primary-color);
+  margin: 0;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  position: sticky;
+  top: 0;
+}
+.add-house-container {
+  background-color: white;
+  padding: 10px;
+  width: 75%;
+  margin: 20px auto;
+  box-shadow: 0 0 1px #abaeb1;
+}
+.submit-button {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 25px;
+  background-color: var(--button-color);
+  border-radius: 5px;
+  border: none;
+  color: white;
+}
+
+.submit-button-disabled {
+  background-color: gray;
+}

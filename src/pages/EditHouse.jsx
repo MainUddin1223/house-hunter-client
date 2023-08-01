@@ -1,17 +1,36 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import HouseForm from "../components/HouseForm";
-import Loader from "../components/Loader";
+import AppLoader from "../components/appLoader/AppLoader";
+import HouseForm from "../components/houseForm/HouseForm";
 import { useAppContext } from "../contextProvider/useAppContext";
 
 const EditHouse = () => {
   const params = useParams();
   const [houseData, setHouseData] = useState({});
   const { setAppLoading, appLoading } = useAppContext();
-  const [phoneNumberValid, setPhoneNumberValid] = useState(true);
+   const [isValidData, setIsValidData] = useState(false);
   const navigate = useNavigate();
+
+     useMemo(() => {
+       if (
+         houseData?.name &&
+         houseData?.phoneNumber &&
+         houseData?.address &&
+         houseData?.city &&
+         houseData?.rent &&
+         houseData?.bedrooms &&
+         houseData?.bathrooms &&
+         houseData?.roomSize &&
+         houseData?.availableFrom &&
+         houseData?.description
+       ) {
+         setIsValidData(true);
+       } else {
+         setIsValidData(false);
+       }
+     }, [houseData]);
 
   const getHouseById = async () => {
     setAppLoading(true);
@@ -86,25 +105,30 @@ const EditHouse = () => {
   useEffect(() => {
     getHouseById();
   }, []);
-  appLoading && <Loader />;
+  if (appLoading) {
+    return <AppLoader/>
+  }
   return (
     <div>
-      <h1 className="my-4 text-center uppercase text-2xl font-semibold">
-        Update House
-      </h1>
-      <hr className="mx-4" />
-      <HouseForm
-        formData={houseData}
-        setFormData={setHouseData}
-        setPhoneNumberValid={setPhoneNumberValid}
-        phoneNumberValid={phoneNumberValid}
-      />
-      <button
-        className={`mx-auto block mb-4 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-4 focus:outline-none dark:focus:ring-primary ${"bg-button-color hover:bg-primary dark:bg-blue-600 dark:hover:bg-blue-700"}`}
-        onClick={handleConfirmation}
-      >
-        Submit
-      </button>
+      <h2 className="owner-add-house-header">Update House</h2>
+      <div className="add-house-container">
+        <HouseForm
+          formData={houseData}
+          setFormData={setHouseData}
+          // setPhoneNumberValid={setPhoneNumberValid}
+          // phoneNumberValid={phoneNumberValid}
+        />
+
+        <button
+          className={`submit-button ${
+            !isValidData && "submit-button-disabled "
+          }`}
+          disabled={!isValidData && true}
+          onClick={handleConfirmation}
+        >
+          Submit
+        </button>
+      </div>
     </div>
   );
 };

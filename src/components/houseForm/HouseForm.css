@@ -1,0 +1,90 @@
+.form-container {
+  padding: 10px;
+  color: gray;
+}
+.house-name-container label {
+  display: block;
+  padding: 10px 0;
+}
+.house-name-container input {
+  margin: 10px 0;
+  padding: 8px;
+  border: none;
+  background-color: rgb(240, 237, 237);
+  border-radius: 5px;
+  width: 50%;
+}
+.description-box {
+  margin: 10px 0;
+  padding: 8px;
+  border: none;
+  background-color: rgb(240, 237, 237);
+  border-radius: 5px;
+  width: 50%;
+}
+.rent-phone-container {
+  display: flex;
+  gap: 10px;
+}
+.phone-container {
+  width: 50%;
+}
+.phone-container label {
+  display: block;
+}
+.phone-container input {
+  margin: 10px 0;
+  padding: 8px;
+  border: none;
+  background-color: rgb(240, 237, 237);
+  border-radius: 5px;
+  width: 50%;
+}
+.rooms-containers {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px;
+}
+.rooms label {
+  display: block;
+  padding: 10px 0;
+}
+.room-buttons {
+  display: flex;
+  gap: 10px;
+}
+.room-buttons input {
+  width: 48px;
+  padding: 5px;
+  text-align: center;
+  border: none;
+  background-color: rgb(240, 237, 237);
+  border-radius: 5px;
+}
+.room-buttons button {
+  border: none;
+  border-radius: 5px;
+  width: 25px;
+  font-size: 20px;
+  background-color: var(--button-color);
+  color: white;
+  cursor: pointer;
+}
+.room-size-container {
+  display: flex;
+  justify-content: space-around;
+}
+.room-abailable-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: space-evenly;
+  margin: 20px;
+}
+.room-abailable-container input {
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  border: none;
+  background-color: rgb(240, 237, 237);
+}

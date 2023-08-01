@@ -2,11 +2,11 @@ import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
 import EditHouse from '../pages/EditHouse';
 import Home from '../pages/Home';
-import ListAHouse from '../pages/ListAHouse';
 import NotFound from '../pages/NotFound';
 import OwnerDashboard from '../pages/OwnerDashboard/OwnerDashboard';
 import RenterBookings from '../pages/RenterBookings';
 import RenterDashboard from '../pages/RenterDashboard';
+import AddHouse from '../pages/addHouse/ListAHouse';
 import HouseList from '../pages/houses/HouseList';
 import Login from '../pages/login/Login';
 import OwnerHouseList from '../pages/ownerHouseList/OwnerHouseList';
@@ -66,7 +66,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/owner/list-house",
-        element: <ListAHouse />,
+        element: <AddHouse />,
       },
       {
         path: "/owner/house/:id",

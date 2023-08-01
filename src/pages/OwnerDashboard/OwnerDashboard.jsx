@@ -41,7 +41,7 @@ console.log(userData)
               <Link to="/" className="dashboard-nav-item">
                 Home
               </Link>
-              <Link to="/" className="dashboard-nav-item">
+              <Link to="/owner/list-house" className="dashboard-nav-item">
                 Add a house
               </Link>
               <Link to="/" className="dashboard-nav-item">
@@ -56,9 +56,6 @@ console.log(userData)
               <Link to="/" className="dashboard-nav-item">
                 Payment
               </Link>
-              <Link to="/" className="dashboard-nav-item">
-                Profile
-              </Link>
               <a className="dashboard-nav-item" onClick={handleLogout}>
                 Logout
               </a>
@@ -66,7 +63,7 @@ console.log(userData)
           </div>
         </div>
         <div className={`content-container ${isHideNav && "is-nav-closed"}`}>
-          <Outlet/>
+          <Outlet />
         </div>
       </div>
     </div>

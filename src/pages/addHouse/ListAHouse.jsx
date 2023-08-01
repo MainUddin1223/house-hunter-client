@@ -2,16 +2,17 @@ import axios from "axios";
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import HouseForm from "../components/HouseForm";
-import { useAppContext } from "../contextProvider/useAppContext";
-
-const ListAHouse = () => {
+import AppLoader from "../../components/appLoader/AppLoader";
+import HouseForm from "../../components/houseForm/HouseForm";
+import { useAppContext } from "../../contextProvider/useAppContext";
+import './AddHouse.css';
+const AddHouse = () => {
   const picture =
     "https://images.freeimages.com/images/previews/675/house-3-1232901.jpg";
    const [listHoueForm,setListHouseForm] = useState({picture,availableFrom:new Date().toISOString().slice(0, 10)})
-   const [phoneNumberValid,setPhoneNumberValid] = useState(true);
+  //  const [phoneNumberValid,setPhoneNumberValid] = useState(true);
    const [isValidData, setIsValidData] = useState(false);
-   const {setAppLoading} = useAppContext()
+   const { appLoading,setAppLoading } = useAppContext();
    const navigate = useNavigate();
    
    useMemo(()=>{
@@ -20,18 +21,16 @@ const ListAHouse = () => {
       listHoueForm?.address &&
       listHoueForm?.city &&
       listHoueForm?.rent &&
-      listHoueForm?.phoneNumber &&
       listHoueForm?.bedrooms &&
       listHoueForm?.bathrooms &&
       listHoueForm?.roomSize &&
       listHoueForm?.availableFrom &&
-      listHoueForm?.description &&
-      phoneNumberValid ){
+      listHoueForm?.description){
       setIsValidData(true)
       } else{
           setIsValidData(false)
-      }
-   },[listHoueForm, phoneNumberValid])
+     }
+   },[listHoueForm])
 
    const handleListHouse = async()=>{
     const token = localStorage.getItem('token')
@@ -77,22 +76,32 @@ const ListAHouse = () => {
       }
     
   }
+  if (appLoading) {
+    return <AppLoader />;
+  }
    return (
-    <>
-      <h1 className="my-4 text-center uppercase text-2xl font-semibold">
-        Add a new house
-      </h1>
-      <hr className="mx-4" />
-      <HouseForm formData={listHoueForm} setFormData={setListHouseForm} setPhoneNumberValid={setPhoneNumberValid} phoneNumberValid={phoneNumberValid}/>
-      <button
-         className={`mx-auto block mb-4 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-4 focus:outline-none dark:focus:ring-primary ${
-          !isValidData ? 'bg-gray-400' : 'bg-button-color hover:bg-primary dark:bg-blue-600 dark:hover:bg-blue-700'
-        }`}
-        disabled={!isValidData && true}
-      onClick={handleListHouse}>
-            Submit
-          </button>
-    </>
-  );
+     <>
+       <h2 className="owner-add-house-header">Add a new house</h2>
+       <div className="add-house-container">
+         <HouseForm
+           formData={listHoueForm}
+           setFormData={setListHouseForm}
+          //  setPhoneNumberValid={setPhoneNumberValid}
+          //  phoneNumberValid={phoneNumberValid}
+         />
+         <button
+           className={`submit-button ${
+             !isValidData
+               && "submit-button-disabled "
+              
+           }`}
+           disabled={!isValidData && true}
+           onClick={handleListHouse}
+         >
+           Submit
+         </button>
+       </div>
+     </>
+   );
 };
-export default ListAHouse;
+export default AddHouse;
